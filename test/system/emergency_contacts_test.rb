@@ -14,9 +14,9 @@ class EmergencyContactsTest < ApplicationSystemTestCase
     visit emergency_contacts_url
     click_on "New emergency contact"
 
-    fill_in "Gardian name", with: @emergency_contact.gardian_name
-    fill_in "Gardian phone", with: @emergency_contact.gardian_phone
-    fill_in "Gardian relation", with: @emergency_contact.gardian_relation
+    fill_in "Guardian name", with: @emergency_contact.guardian_name
+    fill_in "Guardian phone", with: @emergency_contact.guardian_phone
+    fill_in "Guardian relation", with: @emergency_contact.guardian_relation
     fill_in "Student", with: @emergency_contact.student_id
     fill_in "Token", with: @emergency_contact.token
     click_on "Create Emergency contact"
@@ -29,9 +29,9 @@ class EmergencyContactsTest < ApplicationSystemTestCase
     visit emergency_contact_url(@emergency_contact)
     click_on "Edit this emergency contact", match: :first
 
-    fill_in "Gardian name", with: @emergency_contact.gardian_name
-    fill_in "Gardian phone", with: @emergency_contact.gardian_phone
-    fill_in "Gardian relation", with: @emergency_contact.gardian_relation
+    fill_in "Guardian name", with: @emergency_contact.guardian_name
+    fill_in "Guardian phone", with: @emergency_contact.guardian_phone
+    fill_in "Guardian relation", with: @emergency_contact.guardian_relation
     fill_in "Student", with: @emergency_contact.student_id
     fill_in "Token", with: @emergency_contact.token
     click_on "Update Emergency contact"

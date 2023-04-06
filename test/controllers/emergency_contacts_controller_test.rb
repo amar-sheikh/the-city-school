@@ -17,7 +17,7 @@ class EmergencyContactsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create emergency_contact" do
     assert_difference("EmergencyContact.count") do
-      post emergency_contacts_url, params: { emergency_contact: { gardian_name: @emergency_contact.gardian_name, gardian_phone: @emergency_contact.gardian_phone, gardian_relation: @emergency_contact.gardian_relation, student_id: @emergency_contact.student_id, token: @emergency_contact.token } }
+      post emergency_contacts_url, params: { emergency_contact: { guardian_name: @emergency_contact.guardian_name, guardian_phone: @emergency_contact.guardian_phone, guardian_relation: @emergency_contact.guardian_relation, student_id: @emergency_contact.student_id, token: @emergency_contact.token } }
     end
 
     assert_redirected_to emergency_contact_url(EmergencyContact.last)
@@ -34,7 +34,7 @@ class EmergencyContactsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update emergency_contact" do
-    patch emergency_contact_url(@emergency_contact), params: { emergency_contact: { gardian_name: @emergency_contact.gardian_name, gardian_phone: @emergency_contact.gardian_phone, gardian_relation: @emergency_contact.gardian_relation, student_id: @emergency_contact.student_id, token: @emergency_contact.token } }
+    patch emergency_contact_url(@emergency_contact), params: { emergency_contact: { guardian_name: @emergency_contact.guardian_name, guardian_phone: @emergency_contact.guardian_phone, guardian_relation: @emergency_contact.guardian_relation, student_id: @emergency_contact.student_id, token: @emergency_contact.token } }
     assert_redirected_to emergency_contact_url(@emergency_contact)
   end
 

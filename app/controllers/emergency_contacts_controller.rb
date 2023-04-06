@@ -1,5 +1,7 @@
 class EmergencyContactsController < ApplicationController
-  before_action :set_emergency_contact, only: %i[ show edit update destroy ]
+  skip_before_action :authenticate_user!, only: %i[ edit update ]
+  before_action :set_emergency_contact_with_token, :check_accessibility, only: %i[ edit update ]
+  before_action :set_emergency_contact, only: %i[ show destroy ]
 
   # GET /emergency_contacts or /emergency_contacts.json
   def index
@@ -35,11 +37,9 @@ class EmergencyContactsController < ApplicationController
   def update
     respond_to do |format|
       if @emergency_contact.update(emergency_contact_params)
-        format.html { redirect_to emergency_contact_url(@emergency_contact), notice: "Emergency contact was successfully updated." }
-        format.json { render :show, status: :ok, location: @emergency_contact }
+        format.html { redirect_to root_path, notice: "Emergency contact was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @emergency_contact.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -60,8 +60,18 @@ class EmergencyContactsController < ApplicationController
       @emergency_contact = EmergencyContact.find(params[:id])
     end
 
+    def set_emergency_contact_with_token
+      @emergency_contact = EmergencyContact.find_by(id: params[:id], token: params[:token])
+    end
+
+    def check_accessibility
+      return if @emergency_contact
+
+      redirect_to root_path, notice: "Your link has been expired! please contact the school admin."
+    end
+
     # Only allow a list of trusted parameters through.
     def emergency_contact_params
-      params.require(:emergency_contact).permit(:gardian_name, :gardian_relation, :gardian_phone)
+      params.require(:emergency_contact).permit(:guardian_name, :guardian_relation, :guardian_phone)
     end
 end

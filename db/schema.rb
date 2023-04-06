@@ -12,9 +12,9 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_04_06_064441) do
   create_table "emergency_contacts", force: :cascade do |t|
-    t.string "gardian_name"
-    t.string "gardian_relation"
-    t.string "gardian_phone"
+    t.string "guardian_name"
+    t.string "guardian_relation"
+    t.string "guardian_phone"
     t.string "token"
     t.integer "student_id", null: false
     t.datetime "created_at", null: false

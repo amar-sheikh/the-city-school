@@ -13,7 +13,9 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= link_to 'Students', students_path %>
+    <% if user_signed_in? %>
+      <%= link_to 'Students', students_path %>
+    <% end %>
 
     <%= yield %>
   </body>
