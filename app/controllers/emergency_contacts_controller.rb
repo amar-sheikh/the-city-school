@@ -39,7 +39,7 @@ class EmergencyContactsController < ApplicationController
     @emergency_contact.destroy
 
     respond_to do |format|
-      format.html { redirect_to emergency_contacts_url, notice: "Emergency contact was successfully destroyed." }
+      format.html { redirect_to students_path, notice: "Emergency contact was successfully destroyed." }
       format.json { head :no_content }
     end
   end
