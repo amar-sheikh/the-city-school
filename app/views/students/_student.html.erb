@@ -19,4 +19,19 @@
     <%= student.user_id %>
   </p>
 
+  <p>
+    <strong>Emergency contact:</strong>
+    <% if student.emergency_contact %>
+      <%= link_to 'View', emergency_contact_path(student.emergency_contact.id) %>
+      <%= edit_emergency_contact_url(student.emergency_contact, token: student.emergency_contact.token) %>
+    <% else %>
+      <%= link_to 'Generate URL', emergency_contacts_path(student: student.id), data: { turbo_method: :post } %>
+    <% end %>
+  </p>
+
+  <p>
+    <strong>User:</strong>
+    <%= student.user_id %>
+  </p>
+
 </div>
