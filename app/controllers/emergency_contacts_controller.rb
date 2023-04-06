@@ -3,18 +3,8 @@ class EmergencyContactsController < ApplicationController
   before_action :set_emergency_contact_with_token, :check_accessibility, only: %i[ edit update ]
   before_action :set_emergency_contact, only: %i[ show destroy ]
 
-  # GET /emergency_contacts or /emergency_contacts.json
-  def index
-    @emergency_contacts = EmergencyContact.all
-  end
-
   # GET /emergency_contacts/1 or /emergency_contacts/1.json
   def show
-  end
-
-  # GET /emergency_contacts/new
-  def new
-    @emergency_contact = EmergencyContact.new
   end
 
   # GET /emergency_contacts/1/edit
@@ -37,7 +27,7 @@ class EmergencyContactsController < ApplicationController
   def update
     respond_to do |format|
       if @emergency_contact.update(emergency_contact_params)
-        format.html { redirect_to root_path, notice: "Emergency contact was successfully updated." }
+        format.html { redirect_to root_path, notice: "Your data has been saved successfully!" }
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -67,7 +57,7 @@ class EmergencyContactsController < ApplicationController
     def check_accessibility
       return if @emergency_contact
 
-      redirect_to root_path, notice: "Your link has been expired! please contact the school admin."
+      redirect_to root_path, alert: "Your link has been expired! please contact the school admin."
     end
 
     # Only allow a list of trusted parameters through.
